@@ -18,12 +18,25 @@ const savingsPlanSlice = createSlice({
     updateAmount: (state, action) => {
       state.amount = action.payload;
     },
+    incrementReachDate: (state) => {
+      const newDate = new Date(state.reachDate);
+      newDate.setMonth(newDate.getMonth() + 1);
+      state.reachDate = newDate;
+    },
+    decrementReachDate: (state) => {
+      const newDate = new Date(state.reachDate);
+      newDate.setMonth(newDate.getMonth() - 1);
+      state.reachDate = newDate;
+    },
   },
 });
 
-export const { updateAmount } = savingsPlanSlice.actions;
+export const { updateAmount, incrementReachDate, decrementReachDate } =
+  savingsPlanSlice.actions;
 
 export const selectAmount = (state: RootState): number =>
   state.savingsPlan.amount;
+export const selectReachDate = (state: RootState): Date =>
+  state.savingsPlan.reachDate;
 
 export default savingsPlanSlice.reducer;

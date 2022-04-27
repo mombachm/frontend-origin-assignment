@@ -1,7 +1,10 @@
 import { AnyAction } from '@reduxjs/toolkit';
 import savingsPlanReducer, {
+  decrementReachDate,
+  incrementReachDate,
   initialState,
   selectAmount,
+  selectReachDate,
   updateAmount,
 } from './savingsPlanSlice';
 
@@ -17,6 +20,30 @@ describe('savingsPlanSlice', () => {
       const nextState = savingsPlanReducer(initialState, updateAmount(amount));
       const rootState = { savingsPlan: nextState };
       expect(selectAmount(rootState)).toEqual(amount);
+    });
+    it('should properly increment the reach date by month', () => {
+      const nextDate = new Date();
+      nextDate.setMonth(nextDate.getMonth() + 1);
+      const nextState = savingsPlanReducer(initialState, incrementReachDate());
+      const rootState = { savingsPlan: nextState };
+      expect(selectReachDate(rootState).getMonth()).toEqual(
+        nextDate.getMonth()
+      );
+      expect(selectReachDate(rootState).getFullYear()).toEqual(
+        nextDate.getFullYear()
+      );
+    });
+    it('should properly decrement the reach date by month', () => {
+      const nextDate = new Date();
+      nextDate.setMonth(nextDate.getMonth() - 1);
+      const nextState = savingsPlanReducer(initialState, decrementReachDate());
+      const rootState = { savingsPlan: nextState };
+      expect(selectReachDate(rootState).getMonth()).toEqual(
+        nextDate.getMonth()
+      );
+      expect(selectReachDate(rootState).getFullYear()).toEqual(
+        nextDate.getFullYear()
+      );
     });
   });
 });
