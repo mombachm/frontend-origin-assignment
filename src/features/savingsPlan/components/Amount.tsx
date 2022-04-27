@@ -1,7 +1,9 @@
 import NumberFormat from 'react-number-format';
 import { ReactComponent as DollarSignIcon } from '../../../assets/icons/dollar-sign.svg';
 
-type AmountProps = { label: string };
+interface AmountProps {
+  label: string;
+}
 const placeholder = '1,500';
 
 export function Amount(props: AmountProps): JSX.Element {
