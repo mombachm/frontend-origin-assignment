@@ -1,4 +1,4 @@
-import Amount from './features/savingsPlan/components/amount';
+import { Amount } from './features/savingsPlan/components/Amount';
 
 export function App(): JSX.Element {
   return (

@@ -1,4 +1,4 @@
-import Amount from './amount';
+import { Amount } from './Amount';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 

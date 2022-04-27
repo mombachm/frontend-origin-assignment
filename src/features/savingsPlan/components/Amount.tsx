@@ -1,11 +1,10 @@
-import { FC } from 'react';
 import NumberFormat from 'react-number-format';
 import { ReactComponent as DollarSignIcon } from '../../../assets/icons/dollar-sign.svg';
 
 type AmountProps = { label: string };
 const placeholder = '1,500';
 
-const amount: FC<AmountProps> = (props: AmountProps) => {
+export function Amount(props: AmountProps): JSX.Element {
   return (
     <div>
       <label htmlFor="amountInput">{props.label}</label>
@@ -15,5 +14,4 @@ const amount: FC<AmountProps> = (props: AmountProps) => {
       </div>
     </div>
   );
-};
-export default amount;
+}
