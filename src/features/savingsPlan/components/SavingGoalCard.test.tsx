@@ -49,4 +49,8 @@ describe('SavingsGoalCard', () => {
       expect(screen.getByText(expectedYear)).toBeInTheDocument();
     });
   });
+  it('should display the monthly amount information', () => {
+    render(getSavingGoalCard());
+    expect(screen.getByText(/Monthly amount/)).toBeInTheDocument();
+  });
 });
