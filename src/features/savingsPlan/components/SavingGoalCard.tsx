@@ -3,10 +3,12 @@ import { useAppDispatch } from '../../../app/hooks';
 import {
   decrementReachDate,
   incrementReachDate,
+  selectAmount,
   selectReachDate,
   updateAmount,
 } from '../savingsPlanSlice';
 import { Amount } from './Amount';
+import { MonthlyAmountInfo } from './MonthlyAmountInfo';
 import { ReachDate } from './ReachDate';
 
 interface SavingGoalCardProps {
@@ -18,6 +20,7 @@ interface SavingGoalCardProps {
 export function SavingGoalCard(props: SavingGoalCardProps): JSX.Element {
   const dispatch = useAppDispatch();
   const reachDate = useSelector(selectReachDate);
+  const amount = useSelector(selectAmount);
 
   return (
     <div>
@@ -43,8 +46,9 @@ export function SavingGoalCard(props: SavingGoalCardProps): JSX.Element {
             dispatch(decrementReachDate());
           }}
         />
-        <button>Confirm</button>
       </div>
+      <MonthlyAmountInfo reachDate={reachDate} totalAmount={amount} />
+      <button>Confirm</button>
     </div>
   );
 }

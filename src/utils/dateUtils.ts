@@ -10,6 +10,14 @@ export const formatDateToYear = (date: Date): string => {
   });
 };
 
+export const getMonthDifference = (date1: Date, date2: Date): number => {
+  let months;
+  months = (date2.getFullYear() - date1.getFullYear()) * 12;
+  months -= date1.getMonth();
+  months += date2.getMonth();
+  return months <= 0 ? 0 : months;
+};
+
 export const getPreviousMonthDate = (date: Date): Date => {
   const previousMonthDate = new Date(date);
   previousMonthDate.setMonth(date.getMonth() - 1);
