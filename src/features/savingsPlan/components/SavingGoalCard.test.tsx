@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { SavingGoalCard } from './SavingGoalCard';
 import { ReactComponent as BuyAHouseIcon } from '../../../assets/icons/buy-a-house.svg';
 import { StoreProviderWrapper } from '../../../app/StoreProviderWrapper';
@@ -19,6 +19,11 @@ const getSavingGoalCard = () => (
     />
   </StoreProviderWrapper>
 );
+
+enum KeyCode {
+  arrowLeft = 37,
+  arrowRight = 39,
+}
 
 describe('SavingsGoalCard', () => {
   it('should display the card with title, icon and subtitle', () => {
@@ -48,9 +53,37 @@ describe('SavingsGoalCard', () => {
       expect(screen.getByText(expectedMonth)).toBeInTheDocument();
       expect(screen.getByText(expectedYear)).toBeInTheDocument();
     });
+    it('should increment the date by month when focused and when the right arrow key is pressed', () => {
+      const newDate = selectReachDate(store.getState());
+      newDate.setMonth(newDate.getMonth() + 1);
+      const expectedMonth = formatDateToLongMonth(newDate);
+      const expectedYear = formatDateToYear(newDate);
+      render(getSavingGoalCard());
+      const container = screen.getByTestId('reachDateContainer');
+      fireEvent.keyUp(container, {
+        keyCode: KeyCode.arrowRight,
+      });
+      expect(screen.getByText(expectedMonth)).toBeInTheDocument();
+      expect(screen.getByText(expectedYear)).toBeInTheDocument();
+    });
+    it('should decrement the date by month when focused and when the left arrow key is pressed', () => {
+      const newDate = selectReachDate(store.getState());
+      newDate.setMonth(newDate.getMonth() - 1);
+      const expectedMonth = formatDateToLongMonth(newDate);
+      const expectedYear = formatDateToYear(newDate);
+      render(getSavingGoalCard());
+      const container = screen.getByTestId('reachDateContainer');
+      fireEvent.keyUp(container, {
+        keyCode: KeyCode.arrowLeft,
+      });
+      expect(screen.getByText(expectedMonth)).toBeInTheDocument();
+      expect(screen.getByText(expectedYear)).toBeInTheDocument();
+    });
   });
-  it('should display the monthly amount information', () => {
-    render(getSavingGoalCard());
-    expect(screen.getByText(/Monthly amount/)).toBeInTheDocument();
+  describe('MonthlyAmountInfo', () => {
+    it('should display the monthly amount information', () => {
+      render(getSavingGoalCard());
+      expect(screen.getByText(/Monthly amount/)).toBeInTheDocument();
+    });
   });
 });

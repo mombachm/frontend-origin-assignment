@@ -6,6 +6,7 @@ import {
   getPreviousMonthDate,
   isNotFutureDate,
 } from '../../../utils/dateUtils';
+import { KeyboardEvent } from 'react';
 
 interface ReachDateProps {
   label: string;
@@ -15,8 +16,20 @@ interface ReachDateProps {
 }
 
 export function ReachDate(props: ReachDateProps): JSX.Element {
+  const onKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
+    console.log(event.key);
+    switch (event.key) {
+      case 'ArrowRight':
+        props.onIncrement();
+        break;
+      case 'ArrowLeft':
+        props.onDecrement();
+        break;
+    }
+  };
+
   return (
-    <div>
+    <div tabIndex={1} onKeyUp={onKeyUp} data-testid="reachDateContainer">
       <button
         data-testid="downButton"
         disabled={isNotFutureDate(getPreviousMonthDate(props.date))}

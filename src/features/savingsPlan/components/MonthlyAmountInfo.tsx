@@ -46,7 +46,7 @@ export function MonthlyAmountInfo(props: MonthlyAmountInfoProps): JSX.Element {
           You are planning {getMonthlyDeposits(props.reachDate)} monthly
           deposits to reach your {getMoneyFormattedValue(props.totalAmount)}{' '}
           goal by {formatDateToLongMonth(props.reachDate)}{' '}
-          {formatDateToYear(props.reachDate)}
+          {formatDateToYear(props.reachDate)}.
         </span>
       </div>
     </div>

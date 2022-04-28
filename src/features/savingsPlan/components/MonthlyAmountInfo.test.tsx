@@ -23,7 +23,7 @@ describe('MonthlyAmountInfo', () => {
       getByTextContent(
         `You are planning 7 monthly deposits to reach your $5,500.45 goal by ${formatDateToLongMonth(
           reachDate
-        )} ${formatDateToYear(reachDate)}`
+        )} ${formatDateToYear(reachDate)}.`
       )
     );
   });
