@@ -1,14 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
+import { getNextMonthDate, isNotFutureDate } from '../../utils/dateUtils';
 
 interface SavingsPlanState {
   amount: number;
-  reachDate: Date;
+  reachDate: string;
 }
 
 export const initialState: SavingsPlanState = {
   amount: 0,
-  reachDate: new Date(),
+  reachDate: getNextMonthDate(new Date()).toUTCString(),
 };
 
 const savingsPlanSlice = createSlice({
@@ -21,12 +22,13 @@ const savingsPlanSlice = createSlice({
     incrementReachDate: (state) => {
       const newDate = new Date(state.reachDate);
       newDate.setMonth(newDate.getMonth() + 1);
-      state.reachDate = newDate;
+      state.reachDate = newDate.toUTCString();
     },
     decrementReachDate: (state) => {
       const newDate = new Date(state.reachDate);
       newDate.setMonth(newDate.getMonth() - 1);
-      state.reachDate = newDate;
+      if (isNotFutureDate(newDate)) return state;
+      state.reachDate = newDate.toUTCString();
     },
   },
 });
@@ -37,6 +39,6 @@ export const { updateAmount, incrementReachDate, decrementReachDate } =
 export const selectAmount = (state: RootState): number =>
   state.savingsPlan.amount;
 export const selectReachDate = (state: RootState): Date =>
-  state.savingsPlan.reachDate;
+  new Date(state.savingsPlan.reachDate);
 
 export default savingsPlanSlice.reducer;

@@ -22,7 +22,7 @@ describe('savingsPlanSlice', () => {
       expect(selectAmount(rootState)).toEqual(amount);
     });
     it('should properly increment the reach date by month', () => {
-      const nextDate = new Date();
+      const nextDate = new Date(initialState.reachDate);
       nextDate.setMonth(nextDate.getMonth() + 1);
       const nextState = savingsPlanReducer(initialState, incrementReachDate());
       const rootState = { savingsPlan: nextState };
@@ -33,10 +33,27 @@ describe('savingsPlanSlice', () => {
         nextDate.getFullYear()
       );
     });
-    it('should properly decrement the reach date by month', () => {
-      const nextDate = new Date();
-      nextDate.setMonth(nextDate.getMonth() - 1);
+    it('should not decrement the reach date by month when the date is not a valid future date', () => {
+      const nextDate = new Date(initialState.reachDate);
       const nextState = savingsPlanReducer(initialState, decrementReachDate());
+      const rootState = { savingsPlan: nextState };
+      expect(selectReachDate(rootState).getMonth()).toEqual(
+        nextDate.getMonth()
+      );
+      expect(selectReachDate(rootState).getFullYear()).toEqual(
+        nextDate.getFullYear()
+      );
+    });
+    it('should properly decrement the reach date by month when the date is a valid future date', () => {
+      const initialReachDate = new Date();
+      initialReachDate.setMonth(initialReachDate.getMonth() + 3);
+      const state = {
+        amount: 0,
+        reachDate: initialReachDate.toUTCString(),
+      };
+      const nextDate = new Date(initialReachDate);
+      nextDate.setMonth(nextDate.getMonth() - 1);
+      const nextState = savingsPlanReducer(state, decrementReachDate());
       const rootState = { savingsPlan: nextState };
       expect(selectReachDate(rootState).getMonth()).toEqual(
         nextDate.getMonth()

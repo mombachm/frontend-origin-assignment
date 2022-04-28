@@ -1,3 +1,10 @@
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../../app/hooks';
+import {
+  decrementReachDate,
+  incrementReachDate,
+  selectReachDate,
+} from '../savingsPlanSlice';
 import { Amount } from './Amount';
 import { ReachDate } from './ReachDate';
 
@@ -8,6 +15,9 @@ interface SavingGoalCardProps {
 }
 
 export function SavingGoalCard(props: SavingGoalCardProps): JSX.Element {
+  const dispatch = useAppDispatch();
+  const reachDate = useSelector(selectReachDate);
+
   return (
     <div>
       <div>
@@ -17,7 +27,16 @@ export function SavingGoalCard(props: SavingGoalCardProps): JSX.Element {
       </div>
       <div>
         <Amount label="Total amount" />
-        <ReachDate label="Reach date" date={new Date()} />
+        <ReachDate
+          label="Reach date"
+          date={reachDate}
+          onIncrement={() => {
+            dispatch(incrementReachDate());
+          }}
+          onDecrement={() => {
+            dispatch(decrementReachDate());
+          }}
+        />
         <button>Confirm</button>
       </div>
     </div>
