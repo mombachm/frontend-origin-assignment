@@ -10,7 +10,7 @@ export const amountInputPlaceholder = '1,500';
 export function Amount(props: AmountProps): JSX.Element {
   return (
     <div>
-      <label htmlFor="amountInput">{props.label}</label>
+      <span>{props.label}</span>
       <div>
         <DollarSignIcon />
         <NumberFormat

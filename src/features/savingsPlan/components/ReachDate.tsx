@@ -17,7 +17,6 @@ interface ReachDateProps {
 
 export function ReachDate(props: ReachDateProps): JSX.Element {
   const onKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
-    console.log(event.key);
     switch (event.key) {
       case 'ArrowRight':
         props.onIncrement();
@@ -30,6 +29,7 @@ export function ReachDate(props: ReachDateProps): JSX.Element {
 
   return (
     <div tabIndex={1} onKeyUp={onKeyUp} data-testid="reachDateContainer">
+      <span>{props.label}</span>
       <button
         data-testid="downButton"
         disabled={isNotFutureDate(getPreviousMonthDate(props.date))}
