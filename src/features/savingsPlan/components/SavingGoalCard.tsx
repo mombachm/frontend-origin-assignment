@@ -4,6 +4,7 @@ import {
   decrementReachDate,
   incrementReachDate,
   selectReachDate,
+  updateAmount,
 } from '../savingsPlanSlice';
 import { Amount } from './Amount';
 import { ReachDate } from './ReachDate';
@@ -26,7 +27,12 @@ export function SavingGoalCard(props: SavingGoalCardProps): JSX.Element {
         <h4>{props.subtitle}</h4>
       </div>
       <div>
-        <Amount label="Total amount" />
+        <Amount
+          label="Total amount"
+          onValueChange={(value) => {
+            dispatch(updateAmount(value));
+          }}
+        />
         <ReachDate
           label="Reach date"
           date={reachDate}

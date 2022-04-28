@@ -3,8 +3,9 @@ import { ReactComponent as DollarSignIcon } from '../../../assets/icons/dollar-s
 
 interface AmountProps {
   label: string;
+  onValueChange: (value?: number) => void;
 }
-const placeholder = '1,500';
+export const amountInputPlaceholder = '1,500';
 
 export function Amount(props: AmountProps): JSX.Element {
   return (
@@ -12,7 +13,13 @@ export function Amount(props: AmountProps): JSX.Element {
       <label htmlFor="amountInput">{props.label}</label>
       <div>
         <DollarSignIcon />
-        <NumberFormat thousandSeparator={true} placeholder={placeholder} />
+        <NumberFormat
+          thousandSeparator={true}
+          placeholder={amountInputPlaceholder}
+          onValueChange={(value) => {
+            props.onValueChange(value.floatValue);
+          }}
+        />
       </div>
     </div>
   );
