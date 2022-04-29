@@ -5,6 +5,7 @@ export const DollarSignIcon = styled(DollarSign)`
   top: calc(50% - 24px / 2);
   position: relative;
   left: 12px;
+  margin-right: 8px;
 `;
 
 export const AmountContainer = styled.div`
@@ -16,8 +17,10 @@ export const AmountInputStyled = styled.input`
   font-family: Rubik;
   font-weight: 500;
   font-size: 24px;
+  height: 24px;
   line-height: 120%;
   position: relative;
   margin: 14px;
   border: hidden;
+  color: #4d6475;
 `;
