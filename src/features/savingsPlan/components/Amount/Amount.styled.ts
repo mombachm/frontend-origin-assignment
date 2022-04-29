@@ -13,7 +13,11 @@ export const AmountContainer = styled.div`
 `;
 
 export const AmountInputStyled = styled.input`
+  font-family: Rubik;
+  font-weight: 500;
   font-size: 24px;
+  line-height: 120%;
   position: relative;
   margin: 14px;
+  border: hidden;
 `;
