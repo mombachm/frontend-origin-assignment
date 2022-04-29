@@ -1,15 +1,16 @@
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch } from '../../../../app/hooks';
+import { Card } from '../../../../styles/reuse/Card.styled';
 import {
   decrementReachDate,
   incrementReachDate,
   selectAmount,
   selectReachDate,
   updateAmount,
-} from '../savingsPlanSlice';
-import { Amount } from './Amount';
-import { MonthlyAmountInfo } from './MonthlyAmountInfo';
-import { ReachDate } from './ReachDate';
+} from '../../savingsPlanSlice';
+import { Amount } from '../Amount';
+import { MonthlyAmountInfo } from '../MonthlyAmountInfo';
+import { ReachDate } from '../ReachDate';
 
 interface SavingGoalCardProps {
   title: string;
@@ -23,7 +24,7 @@ export function SavingGoalCard(props: SavingGoalCardProps): JSX.Element {
   const amount = useSelector(selectAmount);
 
   return (
-    <div>
+    <Card>
       <div>
         {props.icon}
         <h2>{props.title}</h2>
@@ -49,6 +50,6 @@ export function SavingGoalCard(props: SavingGoalCardProps): JSX.Element {
       </div>
       <MonthlyAmountInfo reachDate={reachDate} totalAmount={amount} />
       <button>Confirm</button>
-    </div>
+    </Card>
   );
 }

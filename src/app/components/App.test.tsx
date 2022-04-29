@@ -1,6 +1,6 @@
 import { App } from './App';
 import { render } from '@testing-library/react';
-import { StoreProviderWrapper } from './app/StoreProviderWrapper';
+import { StoreProviderWrapper } from '../StoreProviderWrapper';
 
 describe('App', () => {
   describe('using testing library', () => {

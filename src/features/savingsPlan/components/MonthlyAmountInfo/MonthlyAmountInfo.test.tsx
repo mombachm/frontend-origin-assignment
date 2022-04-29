@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import { getByTextContent } from '../../../test/test.helper';
+import { getByTextContent } from '../../../../test/test.helper';
 import {
   formatDateToLongMonth,
   formatDateToYear,
-} from '../../../utils/dateUtils';
-import { initialState } from '../savingsPlanSlice';
-import { MonthlyAmountInfo } from './MonthlyAmountInfo';
+} from '../../../../utils/dateUtils';
+import { initialState } from '../../savingsPlanSlice';
+import { MonthlyAmountInfo } from './index';
 
 describe('MonthlyAmountInfo', () => {
   it('should display the monthly deposits amount based on the total amount goal and the reach date', () => {

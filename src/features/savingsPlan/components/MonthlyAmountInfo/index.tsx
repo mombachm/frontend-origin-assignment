@@ -1,9 +1,10 @@
 import NumberFormat from 'react-number-format';
+import { FormElement } from '../../../../styles/reuse/FormElement.styled';
 import {
   formatDateToLongMonth,
   formatDateToYear,
   getMonthDifference,
-} from '../../../utils/dateUtils';
+} from '../../../../utils/dateUtils';
 
 interface MonthlyAmountInfoProps {
   totalAmount: number;
@@ -32,7 +33,7 @@ const getMoneyFormattedValue = (value: number): JSX.Element => {
 
 export function MonthlyAmountInfo(props: MonthlyAmountInfoProps): JSX.Element {
   return (
-    <div>
+    <FormElement>
       <div>
         <span>Monthly amount</span>
         <span>
@@ -49,6 +50,6 @@ export function MonthlyAmountInfo(props: MonthlyAmountInfoProps): JSX.Element {
           {formatDateToYear(props.reachDate)}.
         </span>
       </div>
-    </div>
+    </FormElement>
   );
 }

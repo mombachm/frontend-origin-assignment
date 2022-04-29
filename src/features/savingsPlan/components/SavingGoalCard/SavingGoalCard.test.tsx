@@ -1,14 +1,14 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { SavingGoalCard } from './SavingGoalCard';
-import { ReactComponent as BuyAHouseIcon } from '../../../assets/icons/buy-a-house.svg';
-import { StoreProviderWrapper } from '../../../app/StoreProviderWrapper';
+import { SavingGoalCard } from './index';
+import { ReactComponent as BuyAHouseIcon } from '../../../../assets/icons/buy-a-house.svg';
+import { StoreProviderWrapper } from '../../../../app/StoreProviderWrapper';
 import userEvent from '@testing-library/user-event';
 import {
   formatDateToLongMonth,
   formatDateToYear,
-} from '../../../utils/dateUtils';
-import { store } from '../../../app/store';
-import { selectReachDate } from '../savingsPlanSlice';
+} from '../../../../utils/dateUtils';
+import { store } from '../../../../app/store';
+import { selectReachDate } from '../../savingsPlanSlice';
 
 const getSavingGoalCard = () => (
   <StoreProviderWrapper>

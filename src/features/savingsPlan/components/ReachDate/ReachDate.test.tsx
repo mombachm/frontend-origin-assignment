@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { initialState } from '../savingsPlanSlice';
-import { ReachDate } from './ReachDate';
+import { initialState } from '../../savingsPlanSlice';
+import { ReachDate } from './index';
 
 const getReachDateComponent = (reachDate: Date): JSX.Element => {
   return (
