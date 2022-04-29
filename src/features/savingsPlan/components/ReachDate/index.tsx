@@ -8,6 +8,15 @@ import {
 } from '../../../../utils/dateUtils';
 import { KeyboardEvent } from 'react';
 import { FormElement } from '../../../../styles/reuse/FormElement.styled';
+import { Label, LabelContainer } from '../../../../styles/reuse/Label.styled';
+import {
+  DateContainer,
+  DateMonthText,
+  DateYearText,
+  InputButton,
+  ReachDateContainer,
+  ReachDateFormElementContainer,
+} from './ReachDate.styled';
 
 interface ReachDateProps {
   label: string;
@@ -29,28 +38,32 @@ export function ReachDate(props: ReachDateProps): JSX.Element {
   };
 
   return (
-    <>
-      <span>{props.label}</span>
+    <ReachDateFormElementContainer>
+      <LabelContainer>
+        <Label>{props.label}</Label>
+      </LabelContainer>
       <FormElement
         tabIndex={1}
         onKeyUp={onKeyUp}
         data-testid="reachDateContainer"
       >
-        <button
-          data-testid="downButton"
-          disabled={isNotFutureDate(getPreviousMonthDate(props.date))}
-          onClick={props.onDecrement}
-        >
-          <ChevronLeftIcon />
-        </button>
-        <div>
-          <span>{formatDateToLongMonth(props.date)}</span>
-          <span>{formatDateToYear(props.date)}</span>
-        </div>
-        <button data-testid="upButton" onClick={props.onIncrement}>
-          <ChevronRightIcon />
-        </button>
+        <ReachDateContainer>
+          <InputButton
+            data-testid="downButton"
+            disabled={isNotFutureDate(getPreviousMonthDate(props.date))}
+            onClick={props.onDecrement}
+          >
+            <ChevronLeftIcon />
+          </InputButton>
+          <DateContainer>
+            <DateMonthText>{formatDateToLongMonth(props.date)}</DateMonthText>
+            <DateYearText>{formatDateToYear(props.date)}</DateYearText>
+          </DateContainer>
+          <InputButton data-testid="upButton" onClick={props.onIncrement}>
+            <ChevronRightIcon />
+          </InputButton>
+        </ReachDateContainer>
       </FormElement>
-    </>
+    </ReachDateFormElementContainer>
   );
 }
