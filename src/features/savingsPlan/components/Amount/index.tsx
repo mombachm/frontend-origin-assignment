@@ -1,5 +1,6 @@
 import NumberFormat from 'react-number-format';
 import { FormElement } from '../../../../styles/reuse/FormElement.styled';
+import { Label, LabelContainer } from '../../../../styles/reuse/Label.styled';
 import {
   AmountContainer,
   AmountInputStyled,
@@ -16,7 +17,9 @@ export const amountInputPlaceholder = '1,500';
 export function Amount(props: AmountProps): JSX.Element {
   return (
     <>
-      <span>{props.label}</span>
+      <LabelContainer>
+        <Label>{props.label}</Label>
+      </LabelContainer>
       <FormElement>
         <AmountContainer>
           <DollarSignIcon />
