@@ -11,8 +11,8 @@ import {
   getMonthDifference,
 } from '../../../../utils/dateUtils';
 import {
-  MonthlyAmountValueHighlighted,
-  MonthlyAmountValueInText,
+  AmountValueHighlighted,
+  AmountValueInText,
 } from '../MonthlyAmountValue/MonthlyAmountValue.styled';
 import { MonthlyAmountLabel } from './MonthlyAmountInfo.styled';
 
@@ -22,7 +22,9 @@ interface MonthlyAmountInfoProps {
 }
 
 const getMonthlyAmount = (totalAmount: number, reachDate: Date) => {
-  return totalAmount / getMonthlyDeposits(reachDate);
+  const monthlyDeposits = getMonthlyDeposits(reachDate);
+  if (!totalAmount || !monthlyDeposits) return 0;
+  return totalAmount / monthlyDeposits;
 };
 
 const getMonthlyDeposits = (reachDate: Date) => {
@@ -35,7 +37,8 @@ export function MonthlyAmountInfo(props: MonthlyAmountInfoProps): JSX.Element {
       <HighlightedBox>
         <HighlightedElement>
           <MonthlyAmountLabel>Monthly amount</MonthlyAmountLabel>
-          <MonthlyAmountValueHighlighted
+          <AmountValueHighlighted
+            dataTestId="monthlyAmountValue"
             value={getMonthlyAmount(props.totalAmount, props.reachDate)}
           />
         </HighlightedElement>
@@ -48,7 +51,13 @@ export function MonthlyAmountInfo(props: MonthlyAmountInfoProps): JSX.Element {
               {getMonthlyDeposits(props.reachDate)} monthly deposits
             </SemiBoldSpan>
           }{' '}
-          to reach your {<MonthlyAmountValueInText value={props.totalAmount} />}{' '}
+          to reach your{' '}
+          {
+            <AmountValueInText
+              dataTestId="totalAmountValue"
+              value={props.totalAmount}
+            />
+          }{' '}
           goal by{' '}
           {
             <SemiBoldSpan>

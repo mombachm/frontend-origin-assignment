@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { MonthlyAmountValue } from '.';
+import { AmountValue } from '.';
 import { MOBILE_MAX_SIZE } from '../../../../styles/GlobalStyle.styled';
 
-export const MonthlyAmountValueHighlighted = styled(MonthlyAmountValue)`
+export const AmountValueHighlighted = styled(AmountValue)`
   font-family: Rubik;
   font-weight: 500;
   line-height: 120%;
@@ -17,6 +17,6 @@ export const MonthlyAmountValueHighlighted = styled(MonthlyAmountValue)`
   }
 `;
 
-export const MonthlyAmountValueInText = styled(MonthlyAmountValue)`
+export const AmountValueInText = styled(AmountValue)`
   font-weight: 600;
 `;

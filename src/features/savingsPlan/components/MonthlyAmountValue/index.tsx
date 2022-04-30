@@ -1,15 +1,15 @@
 import NumberFormat from 'react-number-format';
 
-interface MonthlyAmountValueProps {
+interface AmountValueProps {
   value: number;
   className?: string;
+  dataTestId?: string;
 }
 
-export function MonthlyAmountValue(
-  props: MonthlyAmountValueProps
-): JSX.Element {
+export function AmountValue(props: AmountValueProps): JSX.Element {
   return (
     <NumberFormat
+      data-testid={props.dataTestId}
       className={props.className}
       thousandSeparator={true}
       displayType="text"

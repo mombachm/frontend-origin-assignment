@@ -13,7 +13,24 @@ describe('MonthlyAmountInfo', () => {
     reachDate.setMonth(reachDate.getMonth() + 6);
     render(<MonthlyAmountInfo totalAmount={5500} reachDate={reachDate} />);
     expect(screen.getByText(/Monthly amount/)).toBeInTheDocument();
-    expect(screen.getByText(/\$785.71/)).toBeInTheDocument();
+    expect(screen.queryByTestId('monthlyAmountValue')).toHaveTextContent(
+      '$785.71'
+    );
+  });
+  it('should display 0 for monthly deposits amount and total amount when the total amount is 0', () => {
+    const reachDate = new Date(initialState.reachDate);
+    render(<MonthlyAmountInfo totalAmount={0} reachDate={reachDate} />);
+    expect(screen.queryByTestId('monthlyAmountValue')).toHaveTextContent('$0');
+    expect(screen.queryByTestId('totalAmountValue')).toHaveTextContent('$0');
+  });
+  it('should display 0 for monthly deposits amount when total amount or numer of monthly deposits are 0', () => {
+    const reachDate = new Date(initialState.reachDate);
+    reachDate.setMonth(reachDate.getMonth() - 1);
+    render(<MonthlyAmountInfo totalAmount={5500} reachDate={reachDate} />);
+    expect(screen.queryByTestId('monthlyAmountValue')).toHaveTextContent('$0');
+    expect(screen.queryByTestId('totalAmountValue')).toHaveTextContent(
+      '$5,500'
+    );
   });
   it('should display the number of monthly deposits, the total amount goal and the reach date', () => {
     const reachDate = new Date(initialState.reachDate);
