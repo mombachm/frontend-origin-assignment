@@ -1,10 +1,20 @@
-import NumberFormat from 'react-number-format';
-import { FormElement } from '../../../../styles/reuse/FormElement.styled';
+import {
+  Box,
+  HighlightedBox,
+  HighlightedElement,
+  TextBox,
+} from '../../../../styles/reuse/Box.styled';
+import { SemiBoldSpan } from '../../../../styles/reuse/Typography.styled';
 import {
   formatDateToLongMonth,
   formatDateToYear,
   getMonthDifference,
 } from '../../../../utils/dateUtils';
+import {
+  MonthlyAmountValueHighlighted,
+  MonthlyAmountValueInText,
+} from '../MonthlyAmountValue/MonthlyAmountValue.styled';
+import { MonthlyAmountLabel } from './MonthlyAmountInfo.styled';
 
 interface MonthlyAmountInfoProps {
   totalAmount: number;
@@ -19,37 +29,36 @@ const getMonthlyDeposits = (reachDate: Date) => {
   return getMonthDifference(new Date(), reachDate);
 };
 
-const getMoneyFormattedValue = (value: number): JSX.Element => {
-  return (
-    <NumberFormat
-      thousandSeparator={true}
-      displayType="text"
-      decimalScale={2}
-      prefix="$"
-      value={value}
-    />
-  );
-};
-
 export function MonthlyAmountInfo(props: MonthlyAmountInfoProps): JSX.Element {
   return (
-    <FormElement>
-      <div>
-        <span>Monthly amount</span>
+    <Box>
+      <HighlightedBox>
+        <HighlightedElement>
+          <MonthlyAmountLabel>Monthly amount</MonthlyAmountLabel>
+          <MonthlyAmountValueHighlighted
+            value={getMonthlyAmount(props.totalAmount, props.reachDate)}
+          />
+        </HighlightedElement>
+      </HighlightedBox>
+      <TextBox>
         <span>
-          {getMoneyFormattedValue(
-            getMonthlyAmount(props.totalAmount, props.reachDate)
-          )}
+          You are planning{' '}
+          {
+            <SemiBoldSpan>
+              {getMonthlyDeposits(props.reachDate)} monthly deposits
+            </SemiBoldSpan>
+          }{' '}
+          to reach your {<MonthlyAmountValueInText value={props.totalAmount} />}{' '}
+          goal by{' '}
+          {
+            <SemiBoldSpan>
+              {formatDateToLongMonth(props.reachDate)}{' '}
+              {formatDateToYear(props.reachDate)}
+            </SemiBoldSpan>
+          }
+          .
         </span>
-      </div>
-      <div>
-        <span>
-          You are planning {getMonthlyDeposits(props.reachDate)} monthly
-          deposits to reach your {getMoneyFormattedValue(props.totalAmount)}{' '}
-          goal by {formatDateToLongMonth(props.reachDate)}{' '}
-          {formatDateToYear(props.reachDate)}.
-        </span>
-      </div>
-    </FormElement>
+      </TextBox>
+    </Box>
   );
 }

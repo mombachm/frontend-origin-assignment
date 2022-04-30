@@ -5,9 +5,10 @@ export const FormElement = styled.div`
   box-sizing: border-box;
   border-radius: 4px;
   margin: 0 auto;
+  height: 56px;
+  float: none;
 `;
 
 export const FormElementContainer = styled.div`
   align-items: flex-start;
-  /* width: fit-content; */
 `;

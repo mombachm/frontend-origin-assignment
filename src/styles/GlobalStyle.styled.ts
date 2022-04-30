@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
        outline:0;
        box-sizing:border-box;
        font-family: Work Sans, Rubik;
+       color: #1E2A32;
    }
    #root{
        margin:0 auto;

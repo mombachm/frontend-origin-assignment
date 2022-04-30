@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../../../app/hooks';
+import { ActionButton } from '../../../../styles/reuse/Buttons.styled';
 import { Card } from '../../../../styles/reuse/Card.styled';
+import { FormContainer } from '../../../../styles/reuse/FormContainer.styled';
 import {
   decrementReachDate,
   incrementReachDate,
@@ -30,7 +32,7 @@ export function SavingGoalCard(props: SavingGoalCardProps): JSX.Element {
         <h2>{props.title}</h2>
         <h4>{props.subtitle}</h4>
       </div>
-      <div>
+      <FormContainer>
         <Amount
           label="Total amount"
           onValueChange={(value) => {
@@ -38,7 +40,7 @@ export function SavingGoalCard(props: SavingGoalCardProps): JSX.Element {
           }}
         />
         <ReachDate
-          label="Reach date"
+          label="Reach goal by"
           date={reachDate}
           onIncrement={() => {
             dispatch(incrementReachDate());
@@ -47,9 +49,9 @@ export function SavingGoalCard(props: SavingGoalCardProps): JSX.Element {
             dispatch(decrementReachDate());
           }}
         />
-      </div>
+      </FormContainer>
       <MonthlyAmountInfo reachDate={reachDate} totalAmount={amount} />
-      <button>Confirm</button>
+      <ActionButton>Confirm</ActionButton>
     </Card>
   );
 }
