@@ -23,7 +23,7 @@ import {
 } from '../../savingsPlanSlice';
 import { Amount } from '../Amount';
 import { MonthlyAmountInfo } from '../MonthlyAmountInfo';
-import { ReachDate, ReachDateFormElement } from '../ReachDate';
+import { ReachDateFormElement } from '../ReachDate';
 
 interface SavingGoalCardProps {
   title: string;

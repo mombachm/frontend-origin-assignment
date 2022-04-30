@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MOBILE_MAX_SIZE } from '../GlobalStyle.styled';
 
 export const FormContainer = styled.div`
   display: flex;
@@ -7,7 +8,7 @@ export const FormContainer = styled.div`
   column-gap: 10px;
   width: 100%;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: ${MOBILE_MAX_SIZE}) {
     & {
       flex-flow: column;
     }

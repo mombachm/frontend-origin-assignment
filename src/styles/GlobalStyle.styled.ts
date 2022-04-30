@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import { fonts } from '../assets/fonts/fonts';
 
+export const MOBILE_MAX_SIZE = '600px';
+
 const GlobalStyle = createGlobalStyle`
     ${fonts}
    *{
@@ -13,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
    }
    #root{
        margin:0 auto;
+       height: 100vh;
    }
 `;
 export default GlobalStyle;
