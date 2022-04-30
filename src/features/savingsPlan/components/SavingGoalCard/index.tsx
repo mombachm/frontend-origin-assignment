@@ -23,7 +23,7 @@ import {
 } from '../../savingsPlanSlice';
 import { Amount } from '../Amount';
 import { MonthlyAmountInfo } from '../MonthlyAmountInfo';
-import { ReachDate } from '../ReachDate';
+import { ReachDate, ReachDateFormElement } from '../ReachDate';
 
 interface SavingGoalCardProps {
   title: string;
@@ -46,27 +46,32 @@ export function SavingGoalCard(props: SavingGoalCardProps): JSX.Element {
         </CardHeaderInfo>
       </CardHeader>
       <FormContainer>
-        <Amount
-          label="Total amount"
-          onValueChange={(value) => {
-            dispatch(updateAmount(value));
-          }}
-        />
-        <ReachDate
-          label="Reach goal by"
-          date={reachDate}
-          onIncrement={() => {
-            dispatch(incrementReachDate());
-          }}
-          onDecrement={() => {
-            dispatch(decrementReachDate());
-          }}
-        />
         <FormElementContainer>
           <LabelContainer>
-            <Label>Teste</Label>
+            <Label>Total amount</Label>
           </LabelContainer>
-          <FormElement>Teste</FormElement>
+          <FormElement>
+            <Amount
+              onValueChange={(value) => {
+                dispatch(updateAmount(value));
+              }}
+            />
+          </FormElement>
+        </FormElementContainer>
+
+        <FormElementContainer>
+          <LabelContainer>
+            <Label>Reach goal by</Label>
+          </LabelContainer>
+          <ReachDateFormElement
+            date={reachDate}
+            onIncrement={() => {
+              dispatch(incrementReachDate());
+            }}
+            onDecrement={() => {
+              dispatch(decrementReachDate());
+            }}
+          />
         </FormElementContainer>
       </FormContainer>
       <MonthlyAmountInfo reachDate={reachDate} totalAmount={amount} />

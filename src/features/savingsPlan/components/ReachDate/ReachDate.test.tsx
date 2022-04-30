@@ -1,11 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { initialState } from '../../savingsPlanSlice';
-import { ReachDate } from './index';
+import { ReachDateFormElement } from './index';
 
 const getReachDateComponent = (reachDate: Date): JSX.Element => {
   return (
-    <ReachDate
-      label="Reach goal by"
+    <ReachDateFormElement
       date={reachDate}
       onIncrement={() => null}
       onDecrement={() => null}
@@ -14,10 +13,6 @@ const getReachDateComponent = (reachDate: Date): JSX.Element => {
 };
 
 describe('ReachDate', () => {
-  it('should display amount label', () => {
-    render(getReachDateComponent(new Date()));
-    expect(screen.getByText(/Reach goal by/)).toBeInTheDocument();
-  });
   it('should display selected date month', () => {
     render(getReachDateComponent(new Date('2/2/2022')));
     expect(screen.getByText(/February/)).toBeInTheDocument();

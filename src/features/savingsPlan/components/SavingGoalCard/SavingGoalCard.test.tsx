@@ -9,6 +9,7 @@ import {
 } from '../../../../utils/dateUtils';
 import { store } from '../../../../app/store';
 import { selectReachDate } from '../../savingsPlanSlice';
+import { amountInputPlaceholder } from '../Amount';
 
 const getSavingGoalCard = () => (
   <StoreProviderWrapper>
@@ -32,7 +33,20 @@ describe('SavingsGoalCard', () => {
     expect(screen.getByText(/Saving goal/)).toBeInTheDocument();
     expect(screen.getByText(/buy-a-house.svg/)).toBeInTheDocument();
   });
+  describe('Amount', () => {
+    it('should display the amount label and input', () => {
+      render(getSavingGoalCard());
+      expect(screen.getByText(/Total amount/)).toBeInTheDocument();
+      expect(
+        screen.getByPlaceholderText(amountInputPlaceholder)
+      ).toBeInTheDocument();
+    });
+  });
   describe('ReachDate', () => {
+    it('should display amount label', () => {
+      render(getSavingGoalCard());
+      expect(screen.getByText(/Reach goal by/)).toBeInTheDocument();
+    });
     it('should increment the date by month when clicking on the up button', () => {
       const newDate = selectReachDate(store.getState());
       newDate.setMonth(newDate.getMonth() + 1);
@@ -59,7 +73,7 @@ describe('SavingsGoalCard', () => {
       const expectedMonth = formatDateToLongMonth(newDate);
       const expectedYear = formatDateToYear(newDate);
       render(getSavingGoalCard());
-      const container = screen.getByTestId('reachDateContainer');
+      const container = screen.getByTestId('reachDateFormElement');
       fireEvent.keyUp(container, {
         keyCode: KeyCode.arrowRight,
       });
@@ -72,7 +86,7 @@ describe('SavingsGoalCard', () => {
       const expectedMonth = formatDateToLongMonth(newDate);
       const expectedYear = formatDateToYear(newDate);
       render(getSavingGoalCard());
-      const container = screen.getByTestId('reachDateContainer');
+      const container = screen.getByTestId('reachDateFormElement');
       fireEvent.keyUp(container, {
         keyCode: KeyCode.arrowLeft,
       });

@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 import { ReactComponent as DollarSign } from '../../../../assets/icons/dollar-sign.svg';
-import { FormElementContainer } from '../../../../styles/reuse/FormElement.styled';
-
-export const AmountFormElementContainer = styled(FormElementContainer)`
-  /* max-width: 272px; */
-`;
 
 export const AmountContainer = styled.div`
   display: grid;

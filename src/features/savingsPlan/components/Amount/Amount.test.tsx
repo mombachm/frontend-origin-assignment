@@ -2,15 +2,9 @@ import { Amount, amountInputPlaceholder } from './index';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-const getAmountComponent = () => (
-  <Amount label="Total amount" onValueChange={() => null} />
-);
+const getAmountComponent = () => <Amount onValueChange={() => null} />;
 
 describe('Amount', () => {
-  it('should display amount label', () => {
-    render(getAmountComponent());
-    expect(screen.getByText(/Total amount/)).toBeInTheDocument();
-  });
   it('should display amount input', () => {
     render(getAmountComponent());
     expect(
