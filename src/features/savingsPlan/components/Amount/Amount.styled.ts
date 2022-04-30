@@ -3,12 +3,13 @@ import { ReactComponent as DollarSign } from '../../../../assets/icons/dollar-si
 import { FormElementContainer } from '../../../../styles/reuse/FormElement.styled';
 
 export const AmountFormElementContainer = styled(FormElementContainer)`
-  max-width: 272px;
+  /* max-width: 272px; */
 `;
 
 export const AmountContainer = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
+  align-items: center;
 `;
 
 export const AmountInputStyled = styled.input`
@@ -27,7 +28,6 @@ export const AmountInputStyled = styled.input`
 `;
 
 export const DollarSignIcon = styled(DollarSign)`
-  top: calc(50% - 24px / 2);
   position: relative;
   left: 12px;
   margin-right: 8px;

@@ -4,7 +4,7 @@ export const Box = styled.div`
   border: 1px solid #e9eef2;
   box-sizing: border-box;
   border-radius: 4px;
-  margin: 0 auto;
+  margin-top: 24px;
   float: none;
 `;
 
@@ -22,4 +22,5 @@ export const HighlightedElement = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
+  column-gap: 12px;
 `;

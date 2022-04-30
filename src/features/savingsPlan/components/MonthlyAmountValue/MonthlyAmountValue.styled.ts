@@ -7,6 +7,7 @@ export const MonthlyAmountValueHighlighted = styled(MonthlyAmountValue)`
   line-height: 120%;
   font-size: 32px;
   color: #0079ff;
+  overflow: hidden;
 `;
 
 export const MonthlyAmountValueInText = styled(MonthlyAmountValue)`

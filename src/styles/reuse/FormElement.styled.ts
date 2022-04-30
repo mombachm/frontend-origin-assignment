@@ -10,5 +10,7 @@ export const FormElement = styled.div`
 `;
 
 export const FormElementContainer = styled.div`
-  align-items: flex-start;
+  flex: 1;
+
+  /* margin-left: 12px; */
 `;

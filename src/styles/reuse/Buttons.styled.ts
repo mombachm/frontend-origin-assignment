@@ -8,8 +8,11 @@ export const ActionButton = styled.button`
   border-radius: 32px;
   font-size: 16px;
   font-weight: 600;
-  padding: 18px 128px;
+  padding: 18px 0;
+  margin-top: 32px;
   line-height: 20px;
+  max-width: 320px;
+  width: 100%;
 
   &:hover {
     background-color: #2b41b8;

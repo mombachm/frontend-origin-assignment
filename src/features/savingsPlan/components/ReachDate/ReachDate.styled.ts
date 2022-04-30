@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FormElementContainer } from '../../../../styles/reuse/FormElement.styled';
 
 export const ReachDateFormElementContainer = styled(FormElementContainer)`
-  max-width: 312px;
+  /* max-width: 312px; */
 `;
 
 export const ReachDateContainer = styled.div`
