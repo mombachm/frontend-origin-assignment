@@ -1,28 +1,23 @@
 import styled from 'styled-components';
 import { MOBILE_MAX_SIZE } from '../../../../styles/GlobalStyle.styled';
-import { FormElementContainer } from '../../../../styles/reuse/FormElement.styled';
-
-export const ReachDateFormElementContainer = styled(FormElementContainer)`
-  /* max-width: 312px; */
-`;
 
 export const ReachDateContainer = styled.div`
-  display: grid;
-  grid-template-columns: 48px auto 48px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 `;
 
 export const DateContainer = styled.div`
-  display: grid;
-  grid-template-columns: auto;
+  display: flex;
+  flex-flow: column;
   text-align: center;
   margin: 4px 0;
+  flex: 1;
 `;
 
-interface DateTextProps {
-  fontWeight?: string;
-}
-
-export const DateText = styled.span<DateTextProps>`
+export const DateText = styled.span`
   line-height: 150%;
   font-size: 16px;
 
@@ -42,6 +37,7 @@ export const DateYearText = styled(DateText)`
 `;
 
 export const InputButton = styled.button`
+  width: 48px;
   background: none;
   border: none;
   padding: 0;
