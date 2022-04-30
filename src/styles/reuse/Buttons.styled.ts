@@ -17,7 +17,9 @@ export const ActionButton = styled.button`
   &:hover {
     background-color: #2b41b8;
   }
-
+  &:focus {
+    background-color: #2b41b8;
+  }
   &:active {
     background-color: #0b2198;
   }

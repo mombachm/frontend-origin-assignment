@@ -1,4 +1,5 @@
-import NumberFormat from 'react-number-format';
+import { useRef } from 'react';
+import NumberFormat, { InputAttributes } from 'react-number-format';
 import {
   AmountContainer,
   AmountInputStyled,
@@ -12,10 +13,17 @@ interface AmountProps {
 export const amountInputPlaceholder = '1,500';
 
 export function Amount(props: AmountProps): JSX.Element {
+  const amountInput = useRef<HTMLInputElement>(null);
+
   return (
-    <AmountContainer>
+    <AmountContainer
+      onClick={() => {
+        if (amountInput.current) amountInput.current.focus();
+      }}
+    >
       <DollarSignIcon />
       <NumberFormat
+        getInputRef={amountInput}
         thousandSeparator={true}
         placeholder={amountInputPlaceholder}
         customInput={AmountInputStyled}

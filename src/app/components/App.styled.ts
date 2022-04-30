@@ -4,7 +4,8 @@ export const MainContainer = styled.div`
   max-width: 560px;
   margin: auto;
   height: 100%;
-  display: flexbox;
+  display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
 `;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MOBILE_MAX_SIZE } from '../../../../styles/GlobalStyle.styled';
 import { FormElementContainer } from '../../../../styles/reuse/FormElement.styled';
 
 export const ReachDateFormElementContainer = styled(FormElementContainer)`
@@ -24,6 +25,12 @@ interface DateTextProps {
 export const DateText = styled.span<DateTextProps>`
   line-height: 150%;
   font-size: 16px;
+
+  @media screen and (max-width: ${MOBILE_MAX_SIZE}) {
+    & {
+      font-size: 14px;
+    }
+  }
 `;
 
 export const DateMonthText = styled(DateText)`
@@ -42,4 +49,10 @@ export const InputButton = styled.button`
   cursor: pointer;
   outline: inherit;
   height: 100%;
+
+  &:hover {
+    svg path {
+      fill: #2b41b8;
+    }
+  }
 `;

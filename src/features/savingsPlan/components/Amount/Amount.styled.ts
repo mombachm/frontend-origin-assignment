@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as DollarSign } from '../../../../assets/icons/dollar-sign.svg';
+import { MOBILE_MAX_SIZE } from '../../../../styles/GlobalStyle.styled';
 
 export const AmountContainer = styled.div`
   display: grid;
@@ -20,6 +21,12 @@ export const AmountInputStyled = styled.input`
   width: 100%;
   display: block;
   color: #4d6475;
+
+  @media screen and (max-width: ${MOBILE_MAX_SIZE}) {
+    & {
+      font-size: 20px;
+    }
+  }
 `;
 
 export const DollarSignIcon = styled(DollarSign)`

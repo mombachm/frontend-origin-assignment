@@ -7,6 +7,10 @@ export const FormElement = styled.div`
   margin: 0 auto;
   height: 56px;
   float: none;
+
+  &:focus-within {
+    border-color: #0079ff;
+  }
 `;
 
 interface FormElementContainerProps {

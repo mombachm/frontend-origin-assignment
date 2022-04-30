@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { MonthlyAmountValue } from '.';
+import { MOBILE_MAX_SIZE } from '../../../../styles/GlobalStyle.styled';
 
 export const MonthlyAmountValueHighlighted = styled(MonthlyAmountValue)`
   font-family: Rubik;
@@ -8,6 +9,12 @@ export const MonthlyAmountValueHighlighted = styled(MonthlyAmountValue)`
   font-size: 32px;
   color: #0079ff;
   overflow: hidden;
+
+  @media screen and (max-width: ${MOBILE_MAX_SIZE}) {
+    & {
+      font-size: 24px;
+    }
+  }
 `;
 
 export const MonthlyAmountValueInText = styled(MonthlyAmountValue)`
