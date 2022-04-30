@@ -26,8 +26,9 @@ export const TextBox = styled.div`
 `;
 
 export const HighlightedElement = styled.div`
-  display: grid;
-  grid-template-columns: 1fr auto;
   align-items: center;
   column-gap: 12px;
+  row-gap: 10px;
+  display: flex;
+  flex-flow: wrap;
 `;

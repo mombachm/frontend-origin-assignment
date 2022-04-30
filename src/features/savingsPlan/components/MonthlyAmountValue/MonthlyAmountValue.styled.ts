@@ -9,14 +9,24 @@ export const AmountValueHighlighted = styled(AmountValue)`
   font-size: 32px;
   color: #0079ff;
   overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 400px;
+  text-align: end;
 
   @media screen and (max-width: ${MOBILE_MAX_SIZE}) {
     & {
       font-size: 24px;
+      max-width: 300px;
     }
   }
 `;
 
 export const AmountValueInText = styled(AmountValue)`
+  display: inline-block;
+  vertical-align: bottom;
+  max-inline-size: 250px;
+  writing-mode: horizontal-tb;
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

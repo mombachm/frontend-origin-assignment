@@ -4,6 +4,7 @@ import {
   HighlightedElement,
   TextBox,
 } from '../../../../styles/reuse/Box.styled';
+import { HighlightedLabel } from '../../../../styles/reuse/Label.styled';
 import { SemiBoldSpan } from '../../../../styles/reuse/Typography.styled';
 import {
   formatDateToLongMonth,
@@ -14,7 +15,6 @@ import {
   AmountValueHighlighted,
   AmountValueInText,
 } from '../MonthlyAmountValue/MonthlyAmountValue.styled';
-import { MonthlyAmountLabel } from './MonthlyAmountInfo.styled';
 
 interface MonthlyAmountInfoProps {
   totalAmount: number;
@@ -36,7 +36,7 @@ export function MonthlyAmountInfo(props: MonthlyAmountInfoProps): JSX.Element {
     <Box>
       <HighlightedBox>
         <HighlightedElement>
-          <MonthlyAmountLabel>Monthly amount</MonthlyAmountLabel>
+          <HighlightedLabel>Monthly amount</HighlightedLabel>
           <AmountValueHighlighted
             dataTestId="monthlyAmountValue"
             value={getMonthlyAmount(props.totalAmount, props.reachDate)}
@@ -44,29 +44,27 @@ export function MonthlyAmountInfo(props: MonthlyAmountInfoProps): JSX.Element {
         </HighlightedElement>
       </HighlightedBox>
       <TextBox>
-        <span>
-          You are planning{' '}
-          {
-            <SemiBoldSpan>
-              {getMonthlyDeposits(props.reachDate)} monthly deposits
-            </SemiBoldSpan>
-          }{' '}
-          to reach your{' '}
-          {
-            <AmountValueInText
-              dataTestId="totalAmountValue"
-              value={props.totalAmount}
-            />
-          }{' '}
-          goal by{' '}
-          {
-            <SemiBoldSpan>
-              {formatDateToLongMonth(props.reachDate)}{' '}
-              {formatDateToYear(props.reachDate)}
-            </SemiBoldSpan>
-          }
-          .
-        </span>
+        You are planning{' '}
+        {
+          <SemiBoldSpan>
+            {getMonthlyDeposits(props.reachDate)} monthly deposits
+          </SemiBoldSpan>
+        }{' '}
+        to reach your{' '}
+        {
+          <AmountValueInText
+            dataTestId="totalAmountValue"
+            value={props.totalAmount}
+          />
+        }{' '}
+        goal by{' '}
+        {
+          <SemiBoldSpan>
+            {formatDateToLongMonth(props.reachDate)}{' '}
+            {formatDateToYear(props.reachDate)}
+          </SemiBoldSpan>
+        }
+        .
       </TextBox>
     </Box>
   );
