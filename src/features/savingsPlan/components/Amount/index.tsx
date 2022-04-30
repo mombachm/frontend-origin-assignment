@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import NumberFormat, { InputAttributes } from 'react-number-format';
+import NumberFormat from 'react-number-format';
 import {
   AmountContainer,
   AmountInputStyled,

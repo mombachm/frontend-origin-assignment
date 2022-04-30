@@ -1,9 +1,8 @@
+import { Box, TextBox } from '../../../../styles/reuse/Box.styled';
 import {
-  Box,
   HighlightedBox,
   HighlightedElement,
-  TextBox,
-} from '../../../../styles/reuse/Box.styled';
+} from '../../../../styles/reuse/HighlightedBox';
 import { HighlightedLabel } from '../../../../styles/reuse/Label.styled';
 import { SemiBoldSpan } from '../../../../styles/reuse/Typography.styled';
 import {
