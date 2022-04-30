@@ -43,16 +43,17 @@ export const DateYearText = styled(DateText)`
 
 export const InputButton = styled.button`
   background: none;
-  color: inherit;
   border: none;
   padding: 0;
   cursor: pointer;
-  outline: inherit;
   height: 100%;
+  svg path {
+    fill: ${(props) => (props.disabled ? '#BACCD9' : '#8A9CA9')};
+  }
 
   &:hover {
     svg path {
-      fill: #2b41b8;
+      fill: ${(props) => (props.disabled ? '#BACCD9' : '#2b41b8')};
     }
   }
 `;

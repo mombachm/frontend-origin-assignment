@@ -28,7 +28,7 @@ export function Amount(props: AmountProps): JSX.Element {
         placeholder={amountInputPlaceholder}
         customInput={AmountInputStyled}
         onValueChange={(value) => {
-          props.onValueChange(value.floatValue);
+          props.onValueChange(value.floatValue ? value.floatValue : 0);
         }}
       />
     </AmountContainer>
