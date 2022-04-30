@@ -14,7 +14,7 @@ export const DateContainer = styled.div`
   display: grid;
   grid-template-columns: auto;
   text-align: center;
-  margin: 4px 10px;
+  margin: 4px 0;
 `;
 
 interface DateTextProps {

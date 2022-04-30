@@ -9,8 +9,10 @@ export const FormElement = styled.div`
   float: none;
 `;
 
-export const FormElementContainer = styled.div`
-  flex: 1;
+interface FormElementContainerProps {
+  flex?: number;
+}
 
-  /* margin-left: 12px; */
+export const FormElementContainer = styled.div<FormElementContainerProps>`
+  flex: ${(props) => (props.flex ? props.flex : 1)};
 `;

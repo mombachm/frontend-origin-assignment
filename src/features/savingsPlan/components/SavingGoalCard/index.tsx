@@ -46,7 +46,7 @@ export function SavingGoalCard(props: SavingGoalCardProps): JSX.Element {
         </CardHeaderInfo>
       </CardHeader>
       <FormContainer>
-        <FormElementContainer>
+        <FormElementContainer flex={1.5}>
           <LabelContainer>
             <Label>Total amount</Label>
           </LabelContainer>
