@@ -13,7 +13,7 @@ import {
 import {
   AmountValueHighlighted,
   AmountValueInText,
-} from '../MonthlyAmountValue/MonthlyAmountValue.styled';
+} from '../AmountValue/AmountValue.styled';
 
 interface MonthlyAmountInfoProps {
   totalAmount: number;
