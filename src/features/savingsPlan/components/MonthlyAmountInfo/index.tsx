@@ -43,20 +43,20 @@ export function MonthlyAmountInfo(props: MonthlyAmountInfoProps): JSX.Element {
         </HighlightedElement>
       </HighlightedBox>
       <TextBox>
-        You are planning{' '}
+        {'You are planning '}
         {
           <SemiBoldSpan>
             {getMonthlyDeposits(props.reachDate)} monthly deposits
           </SemiBoldSpan>
-        }{' '}
-        to reach your{' '}
+        }
+        {' to reach your '}
         {
           <AmountValueInText
             dataTestId="totalAmountValue"
             value={props.totalAmount}
           />
-        }{' '}
-        goal by{' '}
+        }
+        {' goal by '}
         {
           <SemiBoldSpan>
             {formatDateToLongMonth(props.reachDate)}{' '}
