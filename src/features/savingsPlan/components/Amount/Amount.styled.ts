@@ -21,6 +21,7 @@ export const AmountInputStyled = styled.input`
   width: 100%;
   display: block;
   color: #4d6475;
+  user-select: auto;
 
   @media screen and (max-width: ${MOBILE_MAX_SIZE}) {
     & {

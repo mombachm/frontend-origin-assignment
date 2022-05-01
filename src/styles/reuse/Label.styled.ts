@@ -20,7 +20,7 @@ export const HighlightedLabel = styled.span`
   line-height: 120%;
   font-size: 20px;
   flex: 1;
-  /* white-space: nowrap; */
+  user-select: none;
 
   @media screen and (max-width: ${MOBILE_MAX_SIZE}) {
     & {

@@ -20,6 +20,7 @@ export const DateContainer = styled.div`
 export const DateText = styled.span`
   line-height: 150%;
   font-size: 16px;
+  user-select: none;
 
   @media screen and (max-width: ${MOBILE_MAX_SIZE}) {
     & {

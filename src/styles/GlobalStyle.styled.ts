@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
        box-sizing:border-box;
        font-family: Work Sans, Rubik;
        color: #1E2A32;
+       user-select: none;
    }
    #root{
        margin:0 auto;
