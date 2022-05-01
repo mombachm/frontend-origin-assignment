@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
    #root{
        margin: 0 auto;
        height: 100vh;
+       background-color: #f4f8fa;
    }
 `;
 export default GlobalStyle;
